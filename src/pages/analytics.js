@@ -30,20 +30,20 @@ const Analytics = () => {
     const viewsRef = dbRef(database, "views");
     const favoritesRef = dbRef(database, "favorites");
 
-    onValue(favoritesRef, async (snapshot) => {
-      const favoritesData = snapshot.val() || {};
-      const imageUrls = await fetchImageUrls(favoritesData);
-
-      setImages((prevImages) => ({ ...prevImages, ...imageUrls }));
-      setFavorites(favoritesData);
-    });
-
     onValue(viewsRef, async (snapshot) => {
       const viewsData = snapshot.val() || {};
       const imageUrls = await fetchImageUrls(viewsData);
 
       setImages((prevImages) => ({ ...prevImages, ...imageUrls }));
       setViews(viewsData);
+    });
+
+    onValue(favoritesRef, async (snapshot) => {
+      const favoritesData = snapshot.val() || {};
+      const imageUrls = await fetchImageUrls(favoritesData);
+
+      setImages((prevImages) => ({ ...prevImages, ...imageUrls }));
+      setFavorites(favoritesData);
     });
   }, []);
 
