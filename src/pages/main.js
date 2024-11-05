@@ -85,7 +85,7 @@ const Main = () => {
           <div key={index} className="gallery-item">
             <img
               src={image.src}
-              alt={`Image ${index + 1}`}
+              alt={`${index + 1}`}
               onClick={() => recordView(image.src)}
             />
             <button
