@@ -1,9 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getDatabase } from "firebase/database";
-import { getStorage } from "firebase/storage";
 
-console.log("Firebase Config:", process.env.REACT_APP_FIREBASE_API_KEY);
+// Firebase Storage (no longer free — kept for reference)
+// import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -17,8 +16,13 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const storage = getStorage(app); // Initialize Storage
-const database = getDatabase(app); // Initialize Realtime Database
+const database = getDatabase(app);
 
-export { database, storage, analytics };
+// Firebase Storage (no longer free — kept for reference)
+// const storage = getStorage(app);
+
+export { database };
+// export { database, storage };
+
+export const CLOUD_NAME = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
+export const UPLOAD_PRESET = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET;
